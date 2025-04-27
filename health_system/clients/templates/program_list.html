@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Health Programs</h2>
+<a href="{% url 'program_create' %}" class="btn btn-primary mb-3">Create New Program</a>
+
+{% if programs %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for program in programs %}
+            <tr>
+                <td>{{ program.name }}</td>
+                <td>{{ program.description|truncatechars:50 }}</td>
+                <td>{{ program.created_at|date:"Y-m-d" }}</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-info">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-warning">No health programs available. Create one to get started.</div>
+{% endif %}
+{% endblock %}
