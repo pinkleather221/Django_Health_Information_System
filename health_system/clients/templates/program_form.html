@@ -1,4 +1,4 @@
-{% extends 'clients/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h2>{% if object %}Edit{% else %}Create{% endif %} Health Program</h2>
@@ -15,6 +15,6 @@
         <div class="text-danger">{{ form.description.errors }}</div>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
-    <a href="{% url 'program_list' %}" class="btn btn-secondary">Cancel</a>
+    <a href="{% url 'clients:program_list' %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock %}
